@@ -7,27 +7,14 @@ parser.add_argument('-o', help='path to output folder', dest='out',required=True
 
 args = parser.parse_args()
 
-# train
 json_file = args.json 
 output = args.out 
-
-
-# val
-# json_file = "/home/user/datasets/coco/annotations/instances_val2017.json"
-# output = "/home/user/datasets/coco/labels/val2017/"
-
-"""
-将COCO instance数据集转为YOLO格式
-"""
 class COCO2YOLO:
     def __init__(self):
         self._check_file_and_dir(json_file, output)
         self.labels = json.load(open(json_file, 'r', encoding='utf-8'))
         self.coco_id_name_map = self._categories()
         self.coco_name_list = list(self.coco_id_name_map.values())
-        # print(self.labels['images'][0])
-        # print(self.labels['categories'][0])
-        # print(self.labels['annotations'][0])
         print("total images", len(self.labels['images']))
         print("total categories", len(self.labels['categories']))
         print("total labels", len(self.labels['annotations']))
@@ -56,7 +43,6 @@ class COCO2YOLO:
         return images_info
 
     def _bbox_2_yolo(self, bbox, img_w, img_h):
-        # bbox矩形框, 左上角坐标 , 宽, 高
         x, y, w, h = bbox[0], bbox[1], bbox[2], bbox[3]
         centerx = bbox[0] + w / 2
         centery = bbox[1] + h / 2
