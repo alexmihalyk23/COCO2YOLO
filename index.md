@@ -1,6 +1,5 @@
 # COCO2YOLO
 COCO to YOLO converter
-[Release](https://github.com/alexmihalyk23/COCO2YOLO/releases/download/v1.0.0/COCO2YOLO.zip)
 # Usage
 
 `python COCO2YOLO.py -j coco.json -o path_to_dir`
