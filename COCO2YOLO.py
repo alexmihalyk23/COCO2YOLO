@@ -36,6 +36,8 @@ class COCO2YOLO:
         for image in self.labels['images']:
             id = image['id']
             file_name = image['file_name']
+            if file_name.find('\\') > -1:
+                file_name = file_name[file_name.index('\\')+1:]
             w = image['width']
             h = image['height']
             images_info[id] = (file_name, w, h)
