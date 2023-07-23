@@ -101,7 +101,7 @@ class COCO2YOLO:
 
     def _save_txt(self, anno_dict):
         for k, v in anno_dict.items():
-            file_name = v[0][0].split(".")[0] + ".txt"
+            file_name = os.path.splitext(v[0][0])[0] + ".txt"
             with open(os.path.join(output, file_name), 'w', encoding='utf-8') as f:
                 print(k, v)
                 for obj in v:
